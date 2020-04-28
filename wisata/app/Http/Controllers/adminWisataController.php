@@ -13,33 +13,45 @@ class adminWisataController extends Controller
     }
 
     public function dataWisata(){
-        return view('content.dataWisata');
+        $wisata = Wisata::all();
+        return view('content.dataWisata', compact('wisata'));
     }
     
     public function addWisata(){
         return view('content.addWisata');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
-        $filefoto = $request->file('foto');
-        // Mendapatkan Nama File
-        $nama_filefoto = $filefoto->getClientOriginalName();
-        // Mendapatkan Extension File
-        $extensionfoto = $filefoto->getClientOriginalExtension();
-        // Mendapatkan Ukuran File
-        $ukuran_filefoto = $filefoto->getSize();
-        // Proses Upload File
-        $destinationPathfoto = public_path('uploads/foto');
-        $filefoto->move($destinationPathfoto,$filefoto->getClientOriginalName());
-        //video
-        $filevideo = $request->file('vidio');
-        $nama_filevideo = $filevideo->getClientOriginalName();
-        $extensionvideo = $filevideo->getClientOriginalExtension();
-        $ukuran_filevideo = $filevideo->getSize();
-        $destinationPathvideo = public_path('uploads/video');
-        $filevideo->move($destinationPathvideo,$filevideo->getClientOriginalName());
+        $foto = $request->file('foto')->store('foto');
+        //$folder = [];
+        //$folder[] = $request->file('foto')->store('uploads');
+
+        $oke = Wisata::create([
+            'nama_wisata' => $request->namawisata,
+            'alamat'      => $request->alamat,
+            'kategori'    => $request->kategori,
+            'informasi'   => $request->informasi,
+            'fasilitas'   => $request->fasilitas,
+            'lat'         => $request->latittude,
+            'long'        => $request->longitude,
+            'wilayah'     => $request->wilayah,
+            'foto'        => $foto,
+            //'vidio'       => $filevideo
+        ]);
+        return redirect('/dataWisata');
+    }
+
+    public function update(){
+        return view('content.updatewisata');
+    }
+
+    public function storepalsu(Request $request){
+ // dd($request->file('foto'));
+        //$foto = $request->file('foto')->store('foto');
+        $folder = [];
+        $folder[] = $request->file('foto')->store('uploads');
+
         Wisata::create([
             'nama_wisata' => $request->namawisata,
             'alamat'      => $request->alamat,
@@ -49,14 +61,9 @@ class adminWisataController extends Controller
             'lat'         => $request->latittude,
             'long'        => $request->longitude,
             'wilayah'     => $request->wilayah,
-            'foto'        => $filefoto,
-            'vidio'       => $filevideo
+            'foto'        => $foto,
+            //'vidio'       => $filevideo
         ]);
-
-        return view('content.dataWisata');
-    }
-    
-    public function update(){
-        return view('content.updatewisata');
+        return redirect('/dataWisata');
     }
 }

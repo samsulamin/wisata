@@ -25,42 +25,31 @@
                                             <thead>
                                                 <tr>
                                                     <th>Nama Wisata</th>
-                                                    <th>Alamat</th>
+                                                    {{--<th>Alamat</th>
                                                     <th>Kategori</th>
-                                                    <th>Informasi</th>
+                                                    <th>Informasi</th>--}}
                                                     <th>Fasilitas</th>
                                                     <th>Foto</th>
-                                                    <th>Video</th>
                                                     <th>pilihan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td class="text-center">
-                                                        <a href="{{url('/datawisata/edit')}}" class="btn btn-outline-info btn-sm"><i class='fas fa-pencil-alt'></i></a>
-                                                        <a href="{{url('/delete')}}" class="btn btn-outline-danger btn-sm"><i class='fas fa-trash'></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td>Row 1 Data 2</td>
-                                                    <td>Row 1 Data 1</td>
-                                                    <td class="text-center">
-                                                        <a href="{{url('/datawisata/edit')}}" class="btn btn-outline-info btn-sm"><i class='fas fa-pencil-alt'></i></a>
-                                                        <a href="{{url('/delete')}}" class="btn btn-outline-danger btn-sm"><i class='fas fa-trash'></i></a>
-                                                    </td>
-                                                </tr>
+                                                @foreach($wisata as $wisata)
+                                                    <tr>
+                                                        <td>{{$wisata->nama_wisata}}</td>
+                                                        {{--<td>{{$wisata->alamat}}</td>
+                                                        <td>{{$wisata->kategori}}</td>
+                                                        <td>{{$wisata->informasi}}</td>--}}
+                                                        <td>{{$wisata->fasilitas}}</td>
+                                                        <td>
+                                                            <img src="http://localhost/wisata/storage/app/public/{{$wisata->foto}}" alt="{{$wisata->nama_wisata}}" style="height:100px">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a href="https://www.youtube.com/results?search_query={{$wisata->nama_wisata}}+{{$wisata->wilayah}}" class="btn btn-outline-info btn-sm"><i class='fas fas fa-video'></i></a>
+                                                            <a href="{{url('/delete')}}" class="btn btn-outline-danger btn-sm"><i class='fas fa-trash'></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -76,6 +65,9 @@
 </div>
 @stop
 
-@section('footer')
 
-@stop
+{{--<?php
+    $str = "$wisata->nama_wisata";
+    $namawisata = str_replace(" ", "+", $str);
+    $lokasi = "$wisata->wilayah";
+?>--}}

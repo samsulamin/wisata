@@ -26,7 +26,7 @@
 <body>
 	
 	{{-- memasukan navbar--}}
-	@include('admin.adminNavbar')
+	@include('admin.userNavbar')
 	{{-- Memanggil halaman section main--}}
 	@yield('main')	
 	{{-- 

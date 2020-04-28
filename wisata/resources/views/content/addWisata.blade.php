@@ -40,7 +40,13 @@
                                                     <div class="form-group row">
                                                         <label for="kategori" class="col-sm-4 col-form-label">Kategori</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Kategori" >
+                                                            <select class="form-control "  id="kategori" name="kategori">
+                                                                <option value="Alam">Alam</option>
+                                                                <option value="Kuliner">Kuliner</option>
+                                                                <option value="Parkir">Parkir</option>
+                                                                <option value="Religi">Religi</option>
+                                                                <option value="Edukasi">Edukasi</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -52,7 +58,7 @@
                                                     <div class="form-group row">
                                                         <label for="foto" class="col-sm-4 col-form-label">Foto</label>
                                                         <div class="col-sm-8">
-                                                            <input type="file" class="form-control-file" id="foto" name="foto">
+                                                            <input type="file" class="form-control-file" id="foto" name="foto" data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." multiple >
                                                         </div>
                                                     </div>
                                                 </div>

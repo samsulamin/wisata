@@ -2,7 +2,7 @@
   <nav id="sidebar">
     <div class="p-4 pt-5">
       <a href="{{url('/dashboard')}}">
-        <h5 class="text-white">Admin</h5>
+        <h5 class="text-white">Wisatawan</h5>
         <h3 class="text-white">{{ Auth::user()->name }}</h3>
       </a>
       <ul class="list-unstyled components mb-5">
@@ -24,21 +24,21 @@
                 <a href="#">Peta Wisata</a>
             </li>
             <li>
-                <a href="{{url('/dataWisata')}}">Data Wisata</a>
+                <a href="">Data Wisata</a>
             </li>
             <li>
-                <a href="{{url('/dataWisatawan')}}">Data Wisatawan</a>
+                <a href="">Data Wisatawan</a>
             </li>
           </ul>
         </li>
         <li>
-            <a href="{{url('/about')}}">About</a>
+            <a href="">About</a>
         </li>
         <li>
           <a href="#">Portfolio</a>
         </li>
         <li>
-          <a href="{{url('/contact')}}">Contact</a>
+          <a href="">Contact</a>
         </li>
       </ul>
       <div class="footer">
